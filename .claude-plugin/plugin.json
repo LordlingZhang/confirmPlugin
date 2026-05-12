@@ -1,0 +1,11 @@
+{
+  "name": "confirm-plugin",
+  "version": "1.0.0",
+  "description": "当 Claude Code 需要用户确认操作时，通过 macOS 桌面弹窗主动提醒用户",
+  "author": {
+    "name": "wasai.zhang"
+  },
+  "license": "MIT",
+  "keywords": ["macos", "notification", "desktop", "confirm", "alert"],
+  "hooks": "./hooks/hooks.json"
+}

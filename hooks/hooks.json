@@ -1,0 +1,28 @@
+{
+  "description": "桌面弹窗确认插件 - PreToolUse 时当需要用户确认则弹窗提醒",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/pre-tool-use.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/notify.sh notification",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
