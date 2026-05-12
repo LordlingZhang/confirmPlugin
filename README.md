@@ -17,7 +17,10 @@ cd confirmPlugin
 # 输入并运行: display notification "init" with title "Claude"
 # 点击「允许」
 
-# 4. 重启 Claude Code
+# 4. 检查安装
+./check.sh
+
+# 5. 重启 Claude Code
 ```
 
 ## 环境要求
@@ -58,6 +61,7 @@ cd confirmPlugin
 ## 卸载
 
 ```bash
+./check.sh   # 可选: 先检查状态
 ./uninstall.sh
 ```
 
@@ -73,5 +77,6 @@ confirmPlugin/
 ├── skills/desktop-notify/        # 技能定义
 ├── install.sh                    # 一键安装
 ├── uninstall.sh                  # 一键卸载
+├── check.sh                      # 安装状态检查
 └── USAGE.md                      # 完整使用文档
 ```
