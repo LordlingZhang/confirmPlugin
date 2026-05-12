@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/pre-tool-use.sh",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT:-/Users/zhangyu/.claude/plugins/confirm-plugin}/scripts/pre-tool-use.sh\"",
             "timeout": 10
           }
         ]
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/notify.sh notification",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT:-/Users/zhangyu/.claude/plugins/confirm-plugin}/scripts/notify.sh\" notification",
             "timeout": 5
           }
         ]
