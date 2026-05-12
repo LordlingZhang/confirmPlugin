@@ -3,23 +3,12 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash|Write|Edit|MultiEdit",
+        "matcher": ".*",
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PLUGIN_ROOT:-/Users/zhangyu/.claude/plugins/confirm-plugin}/scripts/pre-tool-use.sh\"",
+            "command": "bash /Users/zhangyu/.claude/plugins/confirm-plugin/scripts/pre-tool-use.sh",
             "timeout": 10
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"${CLAUDE_PLUGIN_ROOT:-/Users/zhangyu/.claude/plugins/confirm-plugin}/scripts/notify.sh\" notification",
-            "timeout": 5
           }
         ]
       }

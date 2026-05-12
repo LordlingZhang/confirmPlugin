@@ -40,13 +40,6 @@ print(json.dumps(data.get('tool_input', {})))
 " 2>/dev/null || echo "{}")
 log "tool_input=$tool_input"
 
-# 只在需要用户确认时才弹窗
-if [ "$permission_mode" != "ask" ]; then
-    log "跳过: permission_mode=$permission_mode 不是 ask"
-    echo '{"continue": true}'
-    exit 0
-fi
-
 # 提取操作摘要
 summary=$(extract_summary "$tool_name" "$tool_input")
 log "summary=$summary"
@@ -57,7 +50,21 @@ case "$tool_name" in
     Write) tool_label="写入文件" ;;
     Edit) tool_label="编辑文件" ;;
     MultiEdit) tool_label="批量编辑" ;;
+    WebSearch) tool_label="网络搜索" ;;
+    WebFetch) tool_label="网络请求" ;;
     *) tool_label="$tool_name" ;;
+esac
+
+# 判断是否需要通知：Bash/WebSearch/WebFetch 始终通知，其他工具仅 ask 模式通知
+case "$tool_name" in
+    Bash|WebSearch|WebFetch) ;;
+    *)
+        if [ "$permission_mode" != "ask" ]; then
+            log "跳过: $tool_name permission_mode=$permission_mode"
+            echo '{"continue": true}'
+            exit 0
+        fi
+        ;;
 esac
 
 log "准备发送通知: title=小牛马,你的claude code需要你确认下一步!!! subtitle=$tool_label message=$summary"
